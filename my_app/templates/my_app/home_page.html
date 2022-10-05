@@ -1,0 +1,29 @@
+{% extends 'my_app/base.html' %}
+
+<!--  -->
+<!--  -->
+<!--  -->
+
+{% block contents %}
+<!--  -->
+{% if posts %}
+<!--  -->
+{% for post in posts %}
+<div
+  class="drop-shadow-xl shadow- px-10 py-5 rounded-xl bg-green-400 text-black w-full"
+>
+  <h1 class="font-bold text-lg">{{ post.owner }}</h1>
+  {% if post.picture %}
+  <figure class="w-full">
+    <img src="{{ post.picture.url }}" class="w-full overflow-hidden" alt="" />
+  </figure>
+  {% endif %}
+  <h2 class="font-medium">{{ post.caption }}</h2>
+  <p class="w-full overflow-hidden">{{ post.body_snippet }}</p>
+  <p class="mr-auto">{{ post.date }}</p>
+</div>
+{% endfor %}
+<!--  -->
+{% endif %}
+<!--  -->
+{% endblock contents %}

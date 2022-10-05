@@ -1,0 +1,18 @@
+/* body {
+  background-color: #000;
+} */
+
+nav {
+  background-color: rgba(255, 255, 255, 0.674);
+  border-bottom: 1.1px solid rgba(197, 197, 197, 0.748);
+  backdrop-filter: blur(5px);
+}
+
+nav form input {
+  background-color: rgb(150, 150, 150);
+  /* color: white; */
+}
+
+* input {
+  border: 1px solid black;
+}

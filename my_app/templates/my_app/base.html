@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'my_app/css/style.css' %}" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Instagram</title>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+            dropShadow: {
+              "3xl": "0 35px 35px rgba(0, 0, 0, 0.25)",
+              "4xl": [
+                "0 35px 35px rgba(0, 0, 0, 0.25)",
+                "0 45px 65px rgba(0, 0, 0, 0.15)",
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="flex flex-col justify-center items-center">
+    <nav
+      class="flex items-center w-full justify-between px-10 py-5 border-b-[1px] sticky top-0 z-10 bg-white-[40]"
+    >
+      <div class="logo">
+        <a href="{% url 'home_page' %}" class="font-extrabold">LOGO</a>
+      </div>
+      <form action="/search/" method="GET">
+        <input
+          type="search"
+          placeholder="Search"
+          class="rounded w-[20rem] p-[0.5rem]"
+          name="p"
+        />
+        <!-- q stands for query like in a google search -->
+        <input
+          type="submit"
+          value=">"
+          class="cursor-pointer rounded p-[0.5rem] bg-green-400 hover:bg-green-500"
+        />
+      </form>
+      <div class="flex items-center gap-16">
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout_page' %}" class="font-bold">Logout</a>
+        <a
+          href="{% url 'create_post_page' %}"
+          class="font-bold p-1 py-[0px] border-2"
+          >+</a
+        >
+        <a href="{% url 'profile_page' %}">
+          <figure>
+            <img src="" alt="{{ user }}" />
+          </figure>
+        </a>
+        {% else %}
+        <a href="{% url 'signup_page' %}" class="font-bold">Signup</a>
+        <a href="{% url 'login_page' %}" class="font-bold">Login</a>
+        <figure>
+          <img src="" alt="@" />
+        </figure>
+        {% endif %}
+      </div>
+    </nav>
+    <main
+      class="flex flex-col justify-center items-center max-w-[600px] gap-16 mt-6"
+    >
+      {% block contents %} {% endblock contents %}
+    </main>
+    <footer></footer>
+  </body>
+</html>

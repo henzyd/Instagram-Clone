@@ -1,0 +1,24 @@
+{% extends 'my_app/base.html' %}
+<!--  -->
+{% load crispy_forms_tags %}
+
+<!--  -->
+<!--  -->
+<!--  -->
+
+{% block contents %}
+<!--  -->
+<h1>Create Post</h1>
+<form method="POST">
+  {% csrf_token %}
+  <!--  -->
+  {{ form | crispy }}
+  <input
+    type="submit"
+    value="submit"
+    class="cursor-pointer p-2 bg-green-300 rounded-full mr-12"
+  />
+  <a href="{% url 'home_page' %}" class="p-2 bg-red-300 rounded-full">Home</a>
+</form>
+<!--  -->
+{% endblock contents %}
