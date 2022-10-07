@@ -16,7 +16,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='my_app/logout_page.html'), name='logout_page'),
     path('create-post/', views.create_post_page, name='create_post_page'),
     path('search/', views.search_page, name='search_page'),
-    path('profile/', views.profile_page, name='profile_page'),
+    path('profile/<int:pk>', views.profile_page, name='profile_page'),
 ]
 
 

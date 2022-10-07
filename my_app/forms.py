@@ -14,6 +14,9 @@ class SignUpForm(forms.Form):
     class Meta:
         model = User
 
+    # def __str__(self) -> str:
+    #     return f'{self.first_name} {self.last_name}'
+
 
 class CreatePostForm(ModelForm):
     class Meta:

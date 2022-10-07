@@ -55,12 +55,12 @@
         <a href="{% url 'logout_page' %}" class="font-bold">Logout</a>
         <a
           href="{% url 'create_post_page' %}"
-          class="font-bold p-1 py-[0px] border-2"
-          >+</a
+          class="font-medium p-1 py-[0px] border-2 rounded-xl"
+          ><p>create</p></a
         >
-        <a href="{% url 'profile_page' %}">
+        <a href="{% url 'profile_page' user.pk %}">
           <figure>
-            <img src="" alt="{{ user }}" />
+            <img src="" alt="{{ user.username }}" />
           </figure>
         </a>
         {% else %}

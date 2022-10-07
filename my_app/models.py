@@ -1,4 +1,3 @@
-from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -19,5 +18,9 @@ class CreatePost(models.Model):
         return self.body[:100] + '...'
 
 
-# class Profile(models.Model):
-#     user = models.OneToOneField(User, )
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_img = models.ImageField(default='my_app/images/default.jpg', upload_to='profiles/')
+
+    def __str__(self) -> str:
+        return f'{self.user}'

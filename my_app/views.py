@@ -84,11 +84,12 @@ def search_page(request):
     print(type(query))
     return render(request, 'my_app/search_page.html')
 
-
-def profile_page(request):
-    user = request.user
-    user_info = models.User.objects.filter(id=user).first()
+def profile_page(request, pk):
+    main_user = User.objects.all().filter(id=pk).first()  ##### NOTE this is the built in user in django
+    user_info = models.Profile.objects.get(id=main_user.pk)  ##### NOTE this is the profile class in models.py
+    print(main_user)
     context = {
-        'user_info': user_info
+        'user_info': user_info,
+        'main_user': main_user,
     }
     return render(request, 'my_app/profile_page.html', context) 

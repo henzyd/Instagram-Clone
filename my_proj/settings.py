@@ -141,6 +141,7 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.getenv('API_SECRET')
 }
 
+MEDIA_URL = '/Milestone_Project/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 ######
 
