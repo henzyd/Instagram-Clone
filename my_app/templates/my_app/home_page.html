@@ -6,24 +6,46 @@
 
 {% block contents %}
 <!--  -->
-{% if posts %}
-<!--  -->
-{% for post in posts %}
 <div
-  class="drop-shadow-xl shadow- px-10 py-5 rounded-xl bg-green-400 text-black w-full"
+  class="max-w-[600px] flex flex-col justify-center items-center gap-16 mt-6"
 >
-  <h1 class="font-bold text-lg">{{ post.owner }}</h1>
-  {% if post.picture %}
-  <figure class="w-full">
-    <img src="{{ post.picture.url }}" class="w-full overflow-hidden" alt="" />
-  </figure>
+  {% if posts %}
+  <!--  -->
+  {% for post in posts %}
+  <div
+    class="drop-shadow-xl w-full py-5 rounded-xl bg-white text-black border-[1px] border-zinc-800"
+  >
+    <div class="flex">
+      <figure>
+        <img src="" alt="profile_pic" />
+      </figure>
+      <h1 class="font-bold text-lg px-6">{{ post.owner }}</h1>
+    </div>
+    {% if post.picture %}
+    <figure class="w-full">
+      <img src="{{ post.picture.url }}" class="w-full overflow-hidden" alt="" />
+    </figure>
+    {% endif %}
+    <div class="px-6 py-4 pb-0">
+      <h2 class="font-medium">{{ post.caption }}</h2>
+      <p class="w-full overflow-hidden">{{ post.body_snippet }}</p>
+      <p class="mr-auto">{{ post.date }}</p>
+    </div>
+  </div>
+  {% endfor %}
+  <!--  -->
   {% endif %}
-  <h2 class="font-medium">{{ post.caption }}</h2>
-  <p class="w-full overflow-hidden">{{ post.body_snippet }}</p>
-  <p class="mr-auto">{{ post.date }}</p>
 </div>
-{% endfor %}
-<!--  -->
-{% endif %}
 <!--  -->
 {% endblock contents %}
+
+<!--  -->
+<!--  -->
+
+{% block sidebar %}
+<!--  -->
+<div class="w-[300px] h-[200px]" style="position: sticky; top: 100px">
+  nfeinfnienenfenfinifenifin
+</div>
+<!--  -->
+{% endblock sidebar %}

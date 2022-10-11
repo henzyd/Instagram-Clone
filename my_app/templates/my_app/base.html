@@ -29,7 +29,10 @@
     </script>
   </head>
 
-  <body class="flex flex-col justify-center items-center">
+  <body
+    class="flex flex-col justify-center items-center"
+    style="background-color: rgba(255, 255, 255, 0.579)"
+  >
     <nav
       class="flex items-center w-full justify-between px-10 py-5 border-b-[1px] sticky top-0 z-10 bg-white-[40]"
     >
@@ -42,6 +45,7 @@
           placeholder="Search"
           class="rounded w-[20rem] p-[0.5rem]"
           name="p"
+          style="background-color: rgb(229, 229, 229)"
         />
         <!-- q stands for query like in a google search -->
         <input
@@ -58,11 +62,12 @@
           class="font-medium p-1 py-[0px] border-2 rounded-xl"
           ><p>create</p></a
         >
-        <a href="{% url 'profile_page' user.pk %}">
+        <a href="{% url 'profile_page' user.username %}">
           <figure>
             <img src="" alt="{{ user.username }}" />
           </figure>
         </a>
+        <!--  -->
         {% else %}
         <a href="{% url 'signup_page' %}" class="font-bold">Signup</a>
         <a href="{% url 'login_page' %}" class="font-bold">Login</a>
@@ -72,10 +77,10 @@
         {% endif %}
       </div>
     </nav>
-    <main
-      class="flex flex-col justify-center items-center max-w-[600px] gap-16 mt-6"
-    >
+    <main class="flex" style="position: relative; gap: 30px">
       {% block contents %} {% endblock contents %}
+      <!--  -->
+      {% block sidebar %} {% endblock sidebar %}
     </main>
     <footer></footer>
   </body>

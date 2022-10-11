@@ -9,5 +9,15 @@
 {% block contents %}
 <!--  -->
 <h1>Search Page</h1>
+{% for the_user in the_user_searched %}
+<!--  -->
+<div style="display: flex; gap: 12px">
+  <figure style="width: 200px; height: 200px; border-radius: 100%">
+    <img style="width: 100%" src="{{ the_user.profile_imgURL }}" alt="" />
+  </figure>
+  <h1 style="font-size: 30px">{{ the_user.user.username }}</h1>
+</div>
+<!--  -->
+{% endfor %}
 <!--  -->
 {% endblock contents %}

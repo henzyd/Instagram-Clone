@@ -7,7 +7,7 @@ class CreatePost(models.Model):
     caption = models.CharField(max_length=100, blank=False)
     body = models.TextField()
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    picture = models.ImageField(blank= True, upload_to='posts/')  ##### FIXME
+    picture = models.ImageField(upload_to='posts/', blank=True)  ##### FIXME
     created_date = models.DateTimeField(auto_now_add=True, null=True)
     edited_date = models.DateTimeField(auto_now=True, null=True)
 
@@ -15,12 +15,27 @@ class CreatePost(models.Model):
         return f'{self.caption} by {self.owner}'
 
     def body_snippet(self):
-        return self.body[:100] + '...'
+        if len(self.body) <= 100:
+            return self.body
+        else:
+            return self.body[:100] + '...'
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_img = models.ImageField(default='my_app/images/default.jpg', upload_to='profiles/')
+    profile_img = models.ImageField(default='profiles/default_teamyy.jpg', upload_to='profiles/', blank=True)
 
     def __str__(self) -> str:
         return f'{self.user}'
+
+    @property
+    def profile_imgURL(self):
+        try:
+            url = self.profile_img.url
+            print('sdfdfd')
+            print(url)
+        except:
+            print('sommmkf')
+            url = ''
+        return url
+

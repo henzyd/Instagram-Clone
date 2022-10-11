@@ -5,5 +5,8 @@ from . import models
 
 class adminCreatPostDisplay(admin.ModelAdmin):
     list_display = ['caption', 'owner', 'id']
+class adminProfileDisplay(admin.ModelAdmin):
+    list_display = ['user', 'id']
 
-admin.site.register([models.CreatePost, models.Profile])
+admin.site.register(models.CreatePost, adminCreatPostDisplay)
+admin.site.register(models.Profile, adminProfileDisplay)

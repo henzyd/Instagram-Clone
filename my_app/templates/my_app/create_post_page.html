@@ -9,7 +9,7 @@
 {% block contents %}
 <!--  -->
 <h1>Create Post</h1>
-<form method="POST w-full">
+<form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <!--  -->
   {{ form | crispy }}

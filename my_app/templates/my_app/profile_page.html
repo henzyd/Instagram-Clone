@@ -7,6 +7,8 @@
 {% block contents %}
 <!--  -->
 <h1>Profile Page</h1>
-<p>{{ main_user.first_name }}</p>
+<figure>
+  <img src="{{ user_info.profile_img.url }}" alt="" />
+</figure>
 <!--  -->
 {% endblock contents %}
