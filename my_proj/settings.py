@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['henzyd-instagram-clone.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['henzyd-clone.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
