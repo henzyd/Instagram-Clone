@@ -7,7 +7,7 @@ from .models import CreatePost, Profile
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-@login_required
+# @login_required
 def home_page(request):
     posts = CreatePost.objects.all()
     #### #### NOTE this is to get all the post by 'ucana'
