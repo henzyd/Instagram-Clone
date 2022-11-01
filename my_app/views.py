@@ -87,7 +87,7 @@ def search_page(request):
     except:
         print('can\'t work')
         query = None
-    
+        
     the_user_searched = []
     if query is not None:
         try:
