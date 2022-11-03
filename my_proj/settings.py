@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv, find_dotenv
+import dj_database_url
 
 load_dotenv(find_dotenv())
 
@@ -22,15 +23,34 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-
+ENV = os.getenv('ENVIRONMENT', 'DEVELOPMENT')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if ENV == 'DEVELOPMENT':
 
-ALLOWED_HOSTS = ['henzyd-clone.herokuapp.com', '127.0.0.1']
+    DEBUG = True
 
+    ALLOWED_HOSTS = []
+
+    
+    DATABASES = { 
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
+elif ENV == 'STAGING':
+    DEBUG = False
+
+    ALLOWED_HOSTS = ['henzyd-clone.herokuapp.com']
+
+    
+    
+    DATABASES = {}
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # Application definition
 
@@ -82,13 +102,6 @@ WSGI_APPLICATION = 'my_proj.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
